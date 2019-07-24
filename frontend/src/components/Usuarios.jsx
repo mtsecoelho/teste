@@ -12,6 +12,7 @@ class Usuarios extends Component {
       usuarios: []
     }
   }
+  
   componentDidMount() {
     axios.get('users').then(r => {
       this.setState({usuarios: r.data})

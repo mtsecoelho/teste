@@ -27,8 +27,7 @@ class Usuario extends Component {
         ...INITIAL_USER}
       )
     }).catch(e => {
-      console.log(e)
-      alert("Erro!")
+      alert(e.errors.join("\n"))
     })
   }
 
@@ -40,8 +39,7 @@ class Usuario extends Component {
         ...INITIAL_USER}
       )
     }).catch(e => {
-      console.log(e)
-      alert("Erro!")
+      alert(e.errors.join("\n"))
     })
   }
 

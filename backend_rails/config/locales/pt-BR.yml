@@ -1,0 +1,25 @@
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+    attributes:
+      user:
+        password: Senha
+        name: Nome
+        username: Usuário
+        password_confirmation: Confirmação de senha
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: não pode ser nula
+              too_short: deve ser maior que 6
+            email:
+              blank: não pode ser nulo
+              invalid: inválido
+            username: 
+              blank: não pode ser nulo
+            password_confirmation:
+              confirmation: não pode ser nula
+       

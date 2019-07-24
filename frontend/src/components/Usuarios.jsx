@@ -15,6 +15,8 @@ class Usuarios extends Component {
   componentDidMount() {
     axios.get('users').then(r => {
       this.setState({usuarios: r.data})
+    }).catch(e => {
+      alert(e.errors.join("\n"))
     })
   }
 
@@ -33,9 +35,7 @@ class Usuarios extends Component {
 
       alert("Usuário removido!")
     }).catch(e => {
-      console.log(e)
-      
-      alert("Erro!")
+      alert(e.errors.join("\n"))
     })
   }
 

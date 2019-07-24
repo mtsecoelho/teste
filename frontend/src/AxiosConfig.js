@@ -5,4 +5,13 @@ const app = axios.create({
     withCredentials: true
 })
 
+app.interceptors.response.use(
+    response => {
+      return response;
+    }, 
+    error => {
+      return Promise.reject(error.response.data)
+    }
+)
+
 export default app;

@@ -30,14 +30,18 @@ class Usuarios extends Component {
       this.setState({
         usuarios: this.state.usuarios.filter(e => e.id !== usuario.id)
       })
+
+      alert("Usuário removido!")
+    }).catch(e => {
+      console.log(e)
+      
+      alert("Erro!")
     })
   }
 
   render() {
     return (
       <div>
-        <Button variant="info" className="m-3" onClick={() => this.props.history.push("/usuario")}>Adicionar Usuário</Button>
-
         <Table striped bordered hover>
           <thead>
             <tr>

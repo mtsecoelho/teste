@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 
-const INITIAL_USER = {name: "", username: "", email: "", password: "", password_confirmation: ""}
+const INITIAL_USER = {id: "", name: "", username: "", email: "", password: "", password_confirmation: ""}
 
 class Usuario extends Component {
   constructor(props) {
@@ -17,6 +17,10 @@ class Usuario extends Component {
     e.preventDefault()
 
     this.state.id ? this.update() : this.create()
+  }
+
+  newUser = () => {
+    this.setState({...INITIAL_USER})
   }
 
   update = () => {
@@ -87,7 +91,10 @@ class Usuario extends Component {
             </Col>
           </Form.Row>
 
-          <Button variant="primary" type="submit">Salva</Button>
+          <div className="text-center">
+            <Button variant="primary" type="submit">Salva</Button>
+            {this.state.id ? <Button variant="info" onClick={() => this.newUser()}>Novo</Button> : (null)}
+          </div>
         </Form>
       </div>
     );

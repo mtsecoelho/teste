@@ -48,12 +48,13 @@ class Home extends Component {
                             </Nav>
                         </Navbar.Collapse>
                         <div>
-                            <Link to='/logout' onClick={() => this.setUserLogged('')}>{`logout de ${this.state.usuarioLogado}`} </Link>
+                            <Link to='/' onClick={() => this.setUserLogged('')}>{`logout de ${this.state.usuarioLogado}`} </Link>
                         </div>
                     </Navbar>
 
                     <div className="container-fluid mt-2">
                         <Switch>
+                            <Route path="/" exact={true} component={Usuarios} />
                             <Route path="/login" exact={true} component={Login} />
                             <Route path="/usuario" exact={true} component={Usuario} />
                             <Route path="/usuarios" exact={true} component={Usuarios} />

@@ -20,27 +20,31 @@ class Usuario extends Component {
   }
 
   update = () => {
-    axios.put(`users/${this.state.id}`, this.state).then(r => {
-      alert("Sucesso!")
+    if (window.confirm("Confirma atualizar usuário?")) {
+      axios.put(`users/${this.state.id}`, this.state).then(r => {
+        alert("Sucesso!")
 
-      this.setState({
-        ...INITIAL_USER}
-      )
-    }).catch(e => {
-      alert(e.errors.join("\n"))
-    })
+        this.setState({
+          ...INITIAL_USER}
+        )
+      }).catch(e => {
+        alert(e.errors.join("\n"))
+      })
+    }
   }
 
   create = () => {
-    axios.post('users', this.state).then(r => {
-      alert("Sucesso!")
+    if (window.confirm("Confirma adicionar usuário?")) {
+      axios.post('users', this.state).then(r => {
+        alert("Sucesso!")
 
-      this.setState({
-        ...INITIAL_USER}
-      )
-    }).catch(e => {
-      alert(e.errors.join("\n"))
-    })
+        this.setState({
+          ...INITIAL_USER}
+        )
+      }).catch(e => {
+        alert(e.errors.join("\n"))
+      })
+    }
   }
 
   render() {

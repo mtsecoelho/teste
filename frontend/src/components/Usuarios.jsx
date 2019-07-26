@@ -29,15 +29,17 @@ class Usuarios extends Component {
   }
 
   remove = usuario => {
-    axios.delete(`users/${usuario.id}`).then(() => {
-      this.setState({
-        usuarios: this.state.usuarios.filter(e => e.id !== usuario.id)
-      })
+    if (window.confirm("Confirma remover usuário?")) {
+      axios.delete(`users/${usuario.id}`).then(() => {
+        this.setState({
+          usuarios: this.state.usuarios.filter(e => e.id !== usuario.id)
+        })
 
-      alert("Usuário removido!")
-    }).catch(e => {
-      alert(e.errors.join("\n"))
-    })
+        alert("Usuário removido!")
+      }).catch(e => {
+        alert(e.errors.join("\n"))
+      })
+    }
   }
 
   render() {

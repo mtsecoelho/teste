@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import { LinkContainer } from 'react-router-bootstrap';
 import Login from './Login';
 import Usuario from './Usuario';
@@ -7,6 +7,7 @@ import Usuarios from './Usuarios';
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import axios from '../AxiosConfig'
 
 class Home extends Component {
     constructor(props) {
@@ -18,6 +19,8 @@ class Home extends Component {
     }
 
     setUserLogged = usuarioLogado => {
+        if (!usuarioLogado) axios.defaults.headers.common['Authorization'] = ''
+
         this.setState({usuarioLogado})
     }
     
@@ -27,7 +30,7 @@ class Home extends Component {
                 {
                 this.state.usuarioLogado ?
                 <div>
-                    <Navbar bg="light" expand="lg">
+                    <Navbar className="justify-content-between bg-light" expand="lg">
                         <LinkContainer to="/">
                             <Navbar.Brand>ARCE</Navbar.Brand>
                         </LinkContainer>
@@ -44,6 +47,9 @@ class Home extends Component {
                                 </NavDropdown>
                             </Nav>
                         </Navbar.Collapse>
+                        <div>
+                            <Link to='/logout' onClick={() => this.setUserLogged('')}>{`logout de ${this.state.usuarioLogado}`} </Link>
+                        </div>
                     </Navbar>
 
                     <div className="container-fluid mt-2">
